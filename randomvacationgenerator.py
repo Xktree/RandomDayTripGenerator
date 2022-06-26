@@ -47,3 +47,93 @@ Denmark_restaurants = ["Basso Kobenhavn", "Restaurant Krebsegaarden", "Den Lille
 Denmark_mode_of_transportation = ["plane", "train", "car", "boat", "bus", "cycling"]
 Denmark_entertainment = ["Copenhagen Zoo", "Denmark National Park", "Rabjerg Mile", "Egeskov Castle in Funen"]
 
+# Initiation
+import random 
+
+yesList = ["Yes","yes","Y","y"]
+result = ["","","",""]
+name = ""
+vacation = ""
+restaurant = ""
+transportation = ""
+entertainment = ""
+
+# User and number of guests
+def userName():
+    return_name = input("Welcome to Global Tours, your premium travel agency! This is our vacation randomizer, great if you are unsure about where you would like to go. Please enter your first and last name:")
+    print("\n")
+    guests = int(input("Welcome {}, how many people will be traveling in your group?".format(return_name)))
+    print("\n")
+    print("How exciting, we have some amazing vacation options!")
+    return return_name 
+
+# Generate random location  
+def userVacation():
+    # user_destination = random(vacation_destinations, 1)
+    user_destination = random.choice(vacation_destinations)
+    result[0] = user_destination
+    vacation_choice = input(f"We have chosen {user_destination} as your dream vacation spot, is this ok with you? Y/N")
+    return vacation_choice
+
+def userRestaurant():
+    restaurant_list = randomSamplePicker("restaurant")
+    print(restaurant_list)
+    user_restaurant = random.choice(restaurant_list)
+    restaurant_choice = input(f"We have chosen {user_restaurant} as your dream restaurant spot, is this ok with you? Y/N")
+    return restaurant_choice
+
+# def randomSamplePicker(sampleTypeContext):
+#     return_result = ["HIIIIIIIIII"]
+#     if sampleTypeContext == "restaurant":
+#         if result[0] == "Aruba":  
+#             return_result = return_result + Aruba_restaurants
+#         elif result[0] == "Bermuda":
+#             return_result = return_result + Bermuda_restaurants
+#         elif result[0] == "Chile":
+#             return_result = return_result + Chile_restaurants
+#         elif result[0] == "Denmark":
+#             return_result = return_result + Denmark_restaurants
+#         else:
+#             return_result = return_result + ["sdfasdf\sd","qweqweqweqweqweqweqweqwe"]
+#     return return_result
+
+def randomSamplePicker(sampleTypeContext):
+    if sampleTypeContext == "restaurant":
+        if result[0] == "Aruba":  
+            return Aruba_restaurants
+        elif result[0] == "Bermuda":
+            return Bermuda_restaurants
+        elif result[0] == "Chile":
+            return Chile_restaurants
+        elif result[0] == "Denmark":
+            return Denmark_restaurants
+
+def vacationChoice():
+    vacation = userVacation()
+    if vacation in yesList:
+        print("An excellent vacation choice!")
+    else:
+        print("That's ok, we have other options.")
+        vacationChoice()
+
+def restaurantChoice():
+    restaurant = userRestaurant()
+    if restaurant in yesList:
+        print("An excellent restaurant choice!")
+    else:
+        print("That's ok, we have other options.")
+        restaurantChoice()
+
+def transportationChoice():
+    transporation = userTransportation()
+    if transportation in yesList:
+        print("An excellent transportation choice!")
+    else:
+        print("That's ok, we have other options.")
+        transportationChoice()
+
+# name = userName()
+vacationChoice()
+restaurantChoice()
+transportationChoice()
+
