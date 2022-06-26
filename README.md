@@ -1,2 +1,2 @@
 # RandomDayTripGenerator
-Generates a random vacation
+Generates a random vacation based on user y/n input
